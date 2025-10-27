@@ -17,19 +17,19 @@ namespace ApplicationsControllerDeadline27102025.Controllers
             this.mediator = mediator;
         }
         [HttpGet("Third")]
-        public async Task<ActionResult<IEnumerable<DepartmentDTO>>> Task3Command()
+        public async Task<IEnumerable<DepartmentDTO>> Task3Command()
         {
             var command = new Task3Command();
             var result = await mediator.SendAsync(command);
-            return Ok(result);
+            return result;
         }
 
         [HttpGet("Fourth")]
-        public async Task<ActionResult<IEnumerable<EmployeeDTO>>> Task4Command(int idDep)
+        public async Task<IEnumerable<EmployeeDTO>> Task4Command(int idDep)
         {
             var command = new Task4Command { IdDep = idDep };
             var result = await mediator.SendAsync(command);
-            return Ok(result);
+            return result;
         }
     }
 }

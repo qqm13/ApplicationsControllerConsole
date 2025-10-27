@@ -16,11 +16,11 @@ namespace ApplicationsControllerDeadline27102025.Controllers
             this.mediator = mediator;
         }
         [HttpGet("Fifth")]
-        public async Task<ActionResult<IEnumerable<ApplicationDTO>>> Task5Command(int idDep)
+        public async Task<IEnumerable<ApplicationDTO>> Task5Command(int idDep)
         {
             var command = new Task5Command { IdDep = idDep };
             var result = await mediator.SendAsync(command);
-            return Ok(result);
+            return result;
         }
     }
 }

@@ -17,19 +17,19 @@ namespace ApplicationsControllerDeadline27102025.Controllers
         }
 
         [HttpGet("PersApplicationByEmail")]
-        public async Task<ActionResult<IEnumerable<ApplicationDTO>>> Task1command(string ApplicantEmail)
+        public async Task<IEnumerable<ApplicationDTO>> Task1command(string ApplicantEmail)
         {
             var command = new Task1command { ApplicantEmail = ApplicantEmail };
             var result = await mediator.SendAsync(command);
-            return Ok(result);
+            return result;
         }
 
         [HttpGet("GroupApplicationByEmail")]
-        public async Task<ActionResult<IEnumerable<ApplicationDTO>>> Task2command(string ApplicantEmail)
+        public async Task<IEnumerable<ApplicationDTO>> Task2command(string ApplicantEmail)
         {
             var command = new Task2command { ApplicantEmail = ApplicantEmail };
             var result = await mediator.SendAsync(command);
-            return Ok(result);
+            return result;
         }
     }
 }
