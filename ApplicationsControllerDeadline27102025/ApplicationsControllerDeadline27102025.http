@@ -1,0 +1,6 @@
+@ApplicationsControllerDeadline27102025_HostAddress = http://localhost:5022
+
+GET {{ApplicationsControllerDeadline27102025_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
