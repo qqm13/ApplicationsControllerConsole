@@ -21,6 +21,8 @@ namespace ApplicationsControllerConsole
             Console.WriteLine("5.Получение списка заявок по отделению");
             Console.WriteLine("6.Подтверждение заявки ");
             Console.WriteLine("7.запрет заявки");
+            Console.WriteLine("8 - Подача заявки на личное посещение"); //1
+            Console.WriteLine("9 - Подача заявки на групповое посещение");//2
             Console.WriteLine("");
             Console.WriteLine("Введите номер требуемой операции");
             int.TryParse(Console.ReadLine(), out var result);
@@ -36,6 +38,8 @@ namespace ApplicationsControllerConsole
                 case 5: Fifth(); Console.ReadLine(); break;
                 case 6: Sixth(); Console.ReadLine(); break;
                 case 7: Seventh(); Console.ReadLine(); break;
+                case 8: Eight(); Console.ReadLine(); break;
+                case 9: Nine(); Console.ReadLine(); break;
             }
         }
 
@@ -132,6 +136,43 @@ namespace ApplicationsControllerConsole
                 Console.WriteLine(res);
                 Console.WriteLine(co);
             }
+        }
+        public static async void Eight() //1
+        {
+            Console.Write("Введите желаемая дата начала действия пропуска");
+            DateTime.TryParse(Console.ReadLine(), out var startdate);
+            Console.Write("Введите желаемую дата окончания");
+            DateTime.TryParse(Console.ReadLine(), out var enddate);
+            Console.Write("Введите цель посещения");
+            string purpose = Console.ReadLine();
+            Console.Write("Введите код департамента");
+            int.TryParse(Console.ReadLine(), out int departmentId);
+            Console.Write("Введите код сотрудника");
+            int.TryParse(Console.ReadLine(), out int employeetId);
+            Console.Write("Введите эмейл заявителя");
+            string email = Console.ReadLine();
+
+            var data = await client.GetAsync($"Applications/NewPersonalApplication?startdate={startdate}&enddate={enddate}&purpose={purpose}&departid={departmentId}&employeeid={employeetId}&email={email}");
+            Console.WriteLine("Заявка оставлена");
+
+        }
+        public static async void Nine() //2
+        {
+            Console.Write("Введите желаемая дата начала действия пропуска");
+            DateTime.TryParse(Console.ReadLine(), out var startdate);
+            Console.Write("Введите желаемую дата окончания");
+            DateTime.TryParse(Console.ReadLine(), out var enddate);
+            Console.Write("Введите цель посещения");
+            string purpose = Console.ReadLine();
+            Console.Write("Введите код департамента");
+            int.TryParse(Console.ReadLine(), out int departmentId);
+            Console.Write("Введите код сотрудника");
+            int.TryParse(Console.ReadLine(), out int employeetId);
+            Console.Write("Введите эмейл заявителя");
+            string email = Console.ReadLine();
+
+            var data = await client.GetAsync($"Applications/NewGroupApplication?startdate={startdate}&enddate={enddate}&purpose={purpose}&departid={departmentId}&employeeid={employeetId}&email={email}");
+            Console.WriteLine("Заявка оставлена");
         }
     }
 }

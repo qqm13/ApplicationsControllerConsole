@@ -39,5 +39,23 @@ namespace ApplicationsControllerDeadline27102025.Controllers
             var result = await mediator.SendAsync(command);
             return result;
         }
+
+        [HttpGet("NewPersonalApplication")]
+        public async Task<ActionResult> TaskNewPersonalApplicationcommand(DateTime startdate, DateTime enddate, string purpose, int departid, int employeeid, string email)
+        {
+            var command = new TaskNewPersonalApplicationcommand { StartDate = startdate, EndDate = enddate, Purpose = purpose, DepartId = departid, Email = email, EmployeeId = employeeid };
+            var result = await mediator.SendAsync(command);
+            return Ok();
+        }
+
+        [HttpGet("NewGroupApplication")]
+        public async Task<ActionResult> TaskNewGroupApplication(DateTime startdate, DateTime enddate, string purpose, int departid, int employeeid, string email)
+        {
+            var command = new TaskNewGroupApplicationcommand { StartDate = startdate, EndDate = enddate, Purpose = purpose, DepartId = departid, Email = email, EmployeeId = employeeid };
+            var result = await mediator.SendAsync(command);
+            return Ok();
+        }
+
+
     }
 }
