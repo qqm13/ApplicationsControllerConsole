@@ -31,5 +31,13 @@ namespace ApplicationsControllerDeadline27102025.Controllers
             var result = await mediator.SendAsync(command);
             return result;
         }
+
+        [HttpGet("ApplicationById")]
+        public async Task<IEnumerable<ApplicationDTO>> Task0command(int applicantId)
+        {
+            var command = new Task0command { ApplicantId = applicantId };
+            var result = await mediator.SendAsync(command);
+            return result;
+        }
     }
 }

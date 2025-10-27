@@ -11,6 +11,7 @@ namespace ApplicationsControllerConsole
         {
             client.BaseAddress = new Uri(baseUrl);
             //ApplicationsController
+            Console.WriteLine("0.Получение заявки уникальному коду");
             Console.WriteLine("1.Получение списка персональных заявок по почте заявителя");
             Console.WriteLine("2.Получение списка групповых заявок по почте заявителя");
             //ReferenceController
@@ -27,6 +28,7 @@ namespace ApplicationsControllerConsole
             switch (result)
             {
                 default: Console.WriteLine("неверная операция, введите номер без лишних символов"); break;
+                case 0: NewZero(); Console.ReadLine(); break;
                 case 1: First(); Console.ReadLine(); break;
                 case 2: Second(); Console.ReadLine(); break;
                 case 3: Third(); Console.ReadLine(); break;
@@ -114,6 +116,22 @@ namespace ApplicationsControllerConsole
         public static async void Seventh()
         {
 
+        }
+
+        public static async void NewZero()
+        {
+            Console.Write("Введите уникальный код заявки: ");
+            var id = Console.ReadLine();
+            var data = await client.GetFromJsonAsync<IEnumerable<ApplicationDTO>>($"Applications/ApplicationById?applicantId={id}");
+            foreach (var data1 in data)
+            {
+                string res = $"{data1.Id} | {data1.RejectionReason} | {data1.StartDate} | {data1.EndDate} | {data1.Purpose}" +
+                    $"  {data1.ApplicantEmail} | {data1.CreatedAt} | {data1.ApplicationType} | {data1.Status}";
+                var co = new string('-', res.Count());
+                Console.WriteLine(co);
+                Console.WriteLine(res);
+                Console.WriteLine(co);
+            }
         }
     }
 }
