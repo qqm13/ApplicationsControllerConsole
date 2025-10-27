@@ -6,10 +6,10 @@ namespace ApplicationsControllerConsole
     internal class Program
     {
         private static readonly HttpClient client = new HttpClient();
-        private static readonly string baseUrl = "http://localhost:5022/api";
+        private static readonly string baseUrl = "http://localhost:5022/api/";
         static void Main()
         {
-
+            client.BaseAddress = new Uri(baseUrl);
             //ApplicationsController
             Console.WriteLine("1.Получение списка персональных заявок по почте заявителя");
             Console.WriteLine("2.Получение списка групповых заявок по почте заявителя");
