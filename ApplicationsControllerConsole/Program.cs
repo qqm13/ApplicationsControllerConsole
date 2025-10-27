@@ -27,13 +27,13 @@ namespace ApplicationsControllerConsole
             switch (result)
             {
                 default: Console.WriteLine("неверная операция, введите номер без лишних символов"); break;
-                case 1: First(); break;
-                case 2: Second(); break;
-                case 3: Third(); break;
-                case 4: Fourth(); break;
-                case 5: Fifth(); break;
-                case 6: Sixth(); break;
-                case 7: Seventh(); break;
+                case 1: First(); Console.ReadLine(); break;
+                case 2: Second(); Console.ReadLine(); break;
+                case 3: Third(); Console.ReadLine(); break;
+                case 4: Fourth(); Console.ReadLine(); break;
+                case 5: Fifth(); Console.ReadLine(); break;
+                case 6: Sixth(); Console.ReadLine(); break;
+                case 7: Seventh(); Console.ReadLine(); break;
             }
         }
 

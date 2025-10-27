@@ -1,4 +1,7 @@
 
+using MyMediator.Extension;
+using System.Reflection;
+
 namespace ApplicationsControllerDeadline27102025
 {
     public class Program
@@ -8,11 +11,12 @@ namespace ApplicationsControllerDeadline27102025
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            builder.Services.AddDbContext<Kirillov2010Context>();
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
-
+            builder.Services.AddScoped<MyMediator.Types.Mediator>();
+            builder.Services.AddMediatorHandlers(Assembly.GetExecutingAssembly());
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
